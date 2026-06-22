@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { projects, type Category } from '../data/projects'
 import { ProjectCard } from './ProjectCard'
+import { Reveal } from './Reveal'
 
 const CATEGORIES: (Category | 'All')[] = [
   'All',
@@ -9,6 +10,9 @@ const CATEGORIES: (Category | 'All')[] = [
   'Full-Stack',
   'Backend',
 ]
+
+// Stable catalog number per project, independent of the active filter.
+const indexOf = new Map(projects.map((p, i) => [p.name, i]))
 
 export function Projects() {
   const [filter, setFilter] = useState<Category | 'All'>('All')
@@ -29,27 +33,27 @@ export function Projects() {
   }, [filter, query])
 
   return (
-    <section id="projects" className="relative mx-auto max-w-6xl px-6 py-20">
-      <div className="mb-10 flex flex-col gap-2">
-        <span className="font-mono text-xs tracking-[0.3em] text-cyan-600 uppercase dark:text-cyan-300/80">
-          // selected work
+    <section id="work" className="relative mx-auto max-w-5xl px-6 py-24">
+      <div className="mb-10">
+        <span className="font-mono text-[11px] tracking-[0.25em] text-gold uppercase">
+          The catalog
         </span>
-        <h2 className="text-3xl font-bold tracking-tight text-strong sm:text-4xl">
-          Projects
+        <h2 className="font-display mt-2 text-4xl font-semibold tracking-[-0.02em] text-bone sm:text-5xl">
+          Selected work
         </h2>
       </div>
 
       {/* Controls */}
-      <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-wrap gap-2">
+      <div className="mb-10 flex flex-col gap-4 border-y border-hair py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-wrap gap-1.5">
           {CATEGORIES.map((c) => (
             <button
               key={c}
               onClick={() => setFilter(c)}
-              className={`rounded-lg border px-3.5 py-1.5 font-mono text-xs transition ${
+              className={`rounded-full px-3.5 py-1.5 font-mono text-xs transition ${
                 filter === c
-                  ? 'border-cyan-500/50 bg-cyan-500/10 text-cyan-600 dark:text-cyan-200'
-                  : 'border-base bg-surface text-muted hover:border-strong hover:text-strong'
+                  ? 'bg-[var(--gold)] text-[var(--ink)]'
+                  : 'text-muted hover:text-bone'
               }`}
             >
               {c}
@@ -57,26 +61,26 @@ export function Projects() {
           ))}
         </div>
 
-        <div className="relative">
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="search projects…"
-            className="w-full rounded-lg border border-base bg-surface px-4 py-2 font-mono text-sm text-strong placeholder:text-faint outline-none transition focus:border-cyan-500/50 sm:w-64"
-          />
-        </div>
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="search…"
+          className="w-full rounded-full border border-hair bg-surface px-4 py-2 font-mono text-sm text-bone placeholder:text-faint outline-none transition focus:border-[var(--gold)] sm:w-52"
+        />
       </div>
 
-      {/* Grid */}
+      {/* Catalog grid */}
       {visible.length ? (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {visible.map((p) => (
-            <ProjectCard key={p.name} project={p} />
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {visible.map((p, i) => (
+            <Reveal key={p.name} delay={Math.min(i, 6) * 60}>
+              <ProjectCard project={p} index={indexOf.get(p.name) ?? i} />
+            </Reveal>
           ))}
         </div>
       ) : (
         <p className="py-16 text-center font-mono text-sm text-faint">
-          No projects match “{query}”.
+          Nothing in the catalog matches “{query}”.
         </p>
       )}
     </section>

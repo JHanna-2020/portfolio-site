@@ -37,6 +37,7 @@ export const projects: Project[] = [
     category: 'Web App',
     tech: ['React', 'TypeScript', 'Vite', 'Supabase', 'PostgreSQL'],
     repo: 'https://github.com/JHanna-2020/pacemint',
+    live: 'https://pacemint.vercel.app/',
     featured: true,
     year: 2026,
   },
@@ -72,12 +73,13 @@ export const projects: Project[] = [
     year: 2026,
   },
   {
-    name: 'SM-NIL',
+    name: 'NIL Sports Media',
     description:
-      'A Next.js web application built with the App Router and TypeScript.',
+      'A platform that connects student-athletes with brands for NIL (name, image, and likeness) deals. Built with Next.js and TypeScript.',
     category: 'Web App',
     tech: ['Next.js', 'TypeScript', 'React'],
     repo: '',
+    live: 'https://sm-nil.vercel.app',
     private: true,
     year: 2026,
   },
@@ -133,6 +135,7 @@ export const projects: Project[] = [
     category: 'Web App',
     tech: ['HTML', 'CSS', 'JavaScript'],
     repo: 'https://github.com/JHanna-2020/Coptic-Hymns-Website',
+    live: 'https://jhanna-2020.github.io/Coptic-Hymns-Website/',
     year: 2023,
   },
   {
@@ -142,6 +145,7 @@ export const projects: Project[] = [
     category: 'Web App',
     tech: ['HTML', 'CSS', 'JavaScript'],
     repo: 'https://github.com/JHanna-2020/webdevelopmentservice',
+    live: 'https://jhanna-2020.github.io/webdevelopmentservice/',
     year: 2020,
   },
 ]

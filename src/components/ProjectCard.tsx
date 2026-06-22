@@ -1,5 +1,5 @@
 import type { Category, Project } from '../data/projects'
-import { LockIcon } from './icons'
+import { LockIcon, ExternalIcon } from './icons'
 
 const CODE: Record<Category, string> = {
   'Web App': 'WEB',
@@ -64,9 +64,23 @@ export function ProjectCard({
         <p className="line-clamp-1 font-mono text-[11px] text-faint">
           {project.tech.join('  ·  ')}
         </p>
-        <span className="shrink-0 pl-3 font-mono text-[11px] text-faint transition group-hover:text-gold">
-          View →
-        </span>
+        <div className="flex shrink-0 items-center gap-3 pl-3">
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1 font-mono text-[11px] text-gold transition hover:brightness-110"
+              aria-label={`Open the live ${project.name} site`}
+            >
+              Live <ExternalIcon className="h-3 w-3" />
+            </a>
+          )}
+          <span className="font-mono text-[11px] text-faint transition group-hover:text-gold">
+            View →
+          </span>
+        </div>
       </div>
     </article>
   )

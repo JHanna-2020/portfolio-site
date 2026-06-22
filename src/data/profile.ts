@@ -9,7 +9,7 @@ export const profile = {
   // Links — leave a value empty ('') to hide that button.
   links: {
     github: 'https://github.com/JHanna-2020',
-    linkedin: '', // <-- paste your LinkedIn profile URL here
+    linkedin: 'https://www.linkedin.com/in/john-hanna-299ba3341',
     email: 'm.hanna5241@gmail.com',
     resume: '', // optional: link to a hosted résumé PDF
   },

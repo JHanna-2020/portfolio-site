@@ -1,6 +1,6 @@
-import { profile } from '../data/profile'
+import { profile, formatPhone } from '../data/profile'
 import { projects, type Category } from '../data/projects'
-import { GitHubIcon, LinkedInIcon, MailIcon, DocIcon } from './icons'
+import { GitHubIcon, LinkedInIcon, MailIcon, DocIcon, PhoneIcon } from './icons'
 
 // Build the "range spectrum" from the real project catalog — proof of breadth,
 // not a claim. Ordered widest-first so the bar reads gold → iris.
@@ -37,7 +37,7 @@ export function Hero() {
             loading="eager"
           />
           <p className="font-mono text-xs tracking-[0.25em] text-muted uppercase">
-            Full-stack · Mobile · Liturgical software
+            Full-stack · Mobile · Web
           </p>
         </div>
 
@@ -82,6 +82,14 @@ export function Hero() {
               className="inline-flex items-center gap-2 rounded-full border border-hair-strong px-5 py-2.5 text-sm font-medium text-bone transition hover:border-[var(--gold)]"
             >
               <MailIcon className="h-4 w-4" /> Email
+            </a>
+          )}
+          {links.phone && (
+            <a
+              href={`tel:${links.phone}`}
+              className="inline-flex items-center gap-2 rounded-full border border-hair-strong px-5 py-2.5 text-sm font-medium text-bone transition hover:border-[var(--gold)]"
+            >
+              <PhoneIcon className="h-4 w-4" /> {formatPhone(links.phone)}
             </a>
           )}
           {links.resume && (

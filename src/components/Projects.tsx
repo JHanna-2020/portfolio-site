@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
-import { projects, type Category } from '../data/projects'
+import { projects, type Category, type Project } from '../data/projects'
 import { ProjectCard } from './ProjectCard'
+import { ProjectModal } from './ProjectModal'
 import { Reveal } from './Reveal'
 
 const CATEGORIES: (Category | 'All')[] = [
@@ -17,6 +18,7 @@ const indexOf = new Map(projects.map((p, i) => [p.name, i]))
 export function Projects() {
   const [filter, setFilter] = useState<Category | 'All'>('All')
   const [query, setQuery] = useState('')
+  const [active, setActive] = useState<Project | null>(null)
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -74,7 +76,11 @@ export function Projects() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((p, i) => (
             <Reveal key={p.name} delay={Math.min(i, 6) * 60}>
-              <ProjectCard project={p} index={indexOf.get(p.name) ?? i} />
+              <ProjectCard
+                project={p}
+                index={indexOf.get(p.name) ?? i}
+                onSelect={() => setActive(p)}
+              />
             </Reveal>
           ))}
         </div>
@@ -82,6 +88,14 @@ export function Projects() {
         <p className="py-16 text-center font-mono text-sm text-faint">
           Nothing in the catalog matches “{query}”.
         </p>
+      )}
+
+      {active && (
+        <ProjectModal
+          project={active}
+          index={indexOf.get(active.name) ?? 0}
+          onClose={() => setActive(null)}
+        />
       )}
     </section>
   )

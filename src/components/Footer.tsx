@@ -1,5 +1,5 @@
-import { profile } from '../data/profile'
-import { GitHubIcon, LinkedInIcon, MailIcon } from './icons'
+import { profile, formatPhone } from '../data/profile'
+import { GitHubIcon, LinkedInIcon, MailIcon, PhoneIcon } from './icons'
 
 export function Footer() {
   const { links } = profile
@@ -17,6 +17,14 @@ export function Footer() {
             >
               {links.email || 'Get in touch'}
             </a>
+            {links.phone && (
+              <a
+                href={`tel:${links.phone}`}
+                className="mt-3 inline-flex items-center gap-2 font-mono text-sm text-muted transition hover:text-gold"
+              >
+                <PhoneIcon className="h-4 w-4" /> {formatPhone(links.phone)}
+              </a>
+            )}
           </div>
 
           <div className="flex items-center gap-5">
@@ -33,6 +41,11 @@ export function Footer() {
             {links.email && (
               <a href={`mailto:${links.email}`} aria-label="Email" className="text-muted transition hover:text-gold">
                 <MailIcon className="h-6 w-6" />
+              </a>
+            )}
+            {links.phone && (
+              <a href={`tel:${links.phone}`} aria-label="Phone" className="text-muted transition hover:text-gold">
+                <PhoneIcon className="h-6 w-6" />
               </a>
             )}
           </div>

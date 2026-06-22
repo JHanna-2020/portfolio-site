@@ -156,7 +156,27 @@ body {
 }
 .reveal.is-in { opacity: 1; transform: none; }
 
+/* ── Project detail modal ────────────────────────────────────────── */
+.modal-backdrop {
+  background: color-mix(in oklab, var(--ink) 72%, transparent);
+  backdrop-filter: blur(6px);
+  animation: fade-in 0.25s ease both;
+}
+.modal-panel {
+  background: var(--ink-2);
+  border: 1px solid var(--hair-strong);
+  box-shadow: 0 40px 120px -30px rgba(0, 0, 0, 0.7);
+  animation: panel-in 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .spectrum-seg, .reveal { animation: none; transition: none; opacity: 1; transform: none; }
+  .spectrum-seg, .reveal, .modal-backdrop, .modal-panel {
+    animation: none; transition: none; opacity: 1; transform: none;
+  }
   html { scroll-behavior: auto; }
 }

@@ -35,11 +35,8 @@ export function Hero() {
           <span className="gold-text">Hanna</span>
         </h1>
 
-        <p className="mt-7 max-w-xl text-pretty text-lg leading-relaxed text-muted">
-          A developer who ships across the whole stack — from an{' '}
-          <span className="text-bone">end-to-end encrypted budgeting dashboard</span> to{' '}
-          <span className="text-bone">native iOS &amp; Android apps</span> for my church.
-          I like building things people actually use.
+        <p className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-muted">
+          {profile.tagline}
         </p>
 
         {/* Actions */}

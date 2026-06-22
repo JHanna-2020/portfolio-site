@@ -9,7 +9,7 @@ export const profile = {
     status: 'Student',
   },
   tagline:
-    'I build web, mobile, and full-stack applications — from end-to-end encrypted dashboards to native iOS & Android apps.',
+    'I am currently a junior pursuing a Computer Science degree at the University of Houston – Clear Lake, with hands-on experience developing and deploying iOS and web applications using Swift, JavaScript, and SQL. I’m passionate about using technology to serve my community and am actively growing my skills in full-stack development and mobile engineering.',
   avatar: 'https://avatars.githubusercontent.com/u/66224091?v=4',
   location: '',
   // Links — leave a value empty ('') to hide that button.

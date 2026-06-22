@@ -1,27 +1,8 @@
 import { profile, formatPhone } from '../data/profile'
-import { projects, type Category } from '../data/projects'
 import { GitHubIcon, LinkedInIcon, MailIcon, DocIcon, PhoneIcon } from './icons'
-
-// Build the "range spectrum" from the real project catalog — proof of breadth,
-// not a claim. Ordered widest-first so the bar reads gold → iris.
-function buildRange() {
-  const counts = new Map<Category, number>()
-  for (const p of projects) counts.set(p.category, (counts.get(p.category) ?? 0) + 1)
-  const total = projects.length
-  return [...counts.entries()]
-    .sort((a, b) => b[1] - a[1])
-    .map(([label, n], i, arr) => ({
-      label,
-      n,
-      pct: (n / total) * 100,
-      // position along the gold→iris ramp
-      t: arr.length > 1 ? i / (arr.length - 1) : 0,
-    }))
-}
 
 export function Hero() {
   const { links } = profile
-  const range = buildRange()
 
   return (
     <header className="relative overflow-hidden">
@@ -36,9 +17,16 @@ export function Hero() {
             className="h-12 w-12 rounded-lg border border-hair-strong object-cover"
             loading="eager"
           />
-          <p className="font-mono text-xs tracking-[0.25em] text-muted uppercase">
-            Full-stack · Mobile · Web
-          </p>
+          <div>
+            <p className="font-mono text-xs tracking-[0.25em] text-muted uppercase">
+              Full-stack · Mobile · Web
+            </p>
+            <p className="mt-1.5 font-mono text-xs text-faint">
+              <span className="text-gold">{profile.education.degree}</span>
+              {' · '}
+              {profile.education.school}
+            </p>
+          </div>
         </div>
 
         <h1 className="font-display mt-8 text-[clamp(3rem,11vw,7rem)] leading-[0.92] font-semibold tracking-[-0.02em] text-bone">
@@ -104,47 +92,6 @@ export function Hero() {
           )}
         </div>
 
-        {/* Signature: the range spectrum */}
-        <div className="tick mt-16 border-t border-hair pt-6">
-          <div className="mb-4 flex items-baseline justify-between">
-            <span className="font-mono text-[11px] tracking-[0.25em] text-faint uppercase">
-              Range · what I ship
-            </span>
-            <span className="font-mono text-[11px] text-faint">
-              {projects.length} projects
-            </span>
-          </div>
-
-          <div className="flex h-3 w-full overflow-hidden rounded-full">
-            {range.map((seg, i) => (
-              <div
-                key={seg.label}
-                className="spectrum-seg h-full"
-                style={{
-                  width: `${seg.pct}%`,
-                  background: `color-mix(in oklab, var(--gold), var(--iris) ${seg.t * 100}%)`,
-                  animationDelay: `${0.15 + i * 0.12}s`,
-                }}
-                title={`${seg.label}: ${seg.n}`}
-              />
-            ))}
-          </div>
-
-          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
-            {range.map((seg) => (
-              <div key={seg.label} className="flex items-center gap-2">
-                <span
-                  className="h-2 w-2 rounded-full"
-                  style={{ background: `color-mix(in oklab, var(--gold), var(--iris) ${seg.t * 100}%)` }}
-                />
-                <span className="font-mono text-xs text-muted">
-                  {seg.label}
-                  <span className="text-faint"> · {seg.n}</span>
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </header>
   )

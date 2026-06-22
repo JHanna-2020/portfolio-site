@@ -2,6 +2,12 @@ export const profile = {
   name: 'John Hanna',
   // Short headline shown under your name in the hero.
   role: 'Software Developer',
+  // Current studies — shown in the hero.
+  education: {
+    degree: 'B.S. Computer Science',
+    school: 'University of Houston–Clear Lake',
+    status: 'Student',
+  },
   tagline:
     'I build web, mobile, and full-stack applications — from end-to-end encrypted dashboards to native iOS & Android apps.',
   avatar: 'https://avatars.githubusercontent.com/u/66224091?v=4',

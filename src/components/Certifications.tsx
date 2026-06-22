@@ -17,6 +17,10 @@ export function Certifications() {
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((cert) => {
+          // Resolve a hosted file against the deploy base URL, or use an external link.
+          const href = cert.file
+            ? import.meta.env.BASE_URL + cert.file
+            : cert.url
           const inner = (
             <>
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-base bg-surface text-cyan-600 dark:text-cyan-300">
@@ -26,22 +30,21 @@ export function Certifications() {
               <p className="mt-1 text-sm text-muted">{cert.issuer}</p>
               <div className="mt-4 flex items-center justify-between">
                 <span className="font-mono text-[11px] text-faint">{cert.date}</span>
-                {cert.url && (
-                  <span className="inline-flex items-center gap-1 font-mono text-[11px] text-cyan-600 dark:text-cyan-300">
-                    Verify <ExternalIcon className="h-3 w-3" />
+                {href && (
+                  <span className="inline-flex items-center gap-1 font-mono text-[11px] text-cyan-600 transition group-hover:gap-1.5 dark:text-cyan-300">
+                    View <ExternalIcon className="h-3 w-3" />
                   </span>
                 )}
               </div>
             </>
           )
 
-          const base =
-            'group relative flex flex-col rounded-2xl glass card-hover p-6'
+          const base = 'group relative flex flex-col rounded-2xl glass card-hover p-6'
 
-          return cert.url ? (
+          return href ? (
             <a
               key={cert.name}
-              href={cert.url}
+              href={href}
               target="_blank"
               rel="noreferrer"
               className={base}

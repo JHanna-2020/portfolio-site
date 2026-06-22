@@ -22,6 +22,14 @@ Everything is data-driven — no need to touch the components:
 - **`src/data/projects.ts`** — the project list. Add, remove, or reorder freely.
   Set `private: true` for private repos (shows a lock badge, no broken link);
   set `featured: true` to pin a project to the top with a neon highlight.
+- **`src/data/certifications.ts`** — your certifications. To add one as you earn it:
+  1. Drop the certificate PDF (or image) into **`public/certificates/`**.
+  2. Add an entry: `{ name, issuer, date, file: 'certificates/your-file.pdf' }`
+     (or use `url` for an external verification link instead of a hosted file).
+
+  The section hides itself automatically while the list is empty.
+
+The site automatically follows your **system light/dark theme** — no toggle needed.
 
 ## Deploy
 

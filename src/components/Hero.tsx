@@ -61,7 +61,7 @@ export function Hero() {
               href={links.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[var(--gold)] px-5 py-2.5 text-sm font-semibold text-[var(--ink)] transition hover:brightness-105"
+              className="inline-flex items-center gap-2 rounded-full bg-[#0A66C2] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#004182]"
             >
               <LinkedInIcon className="h-4 w-4" /> Connect on LinkedIn
             </a>

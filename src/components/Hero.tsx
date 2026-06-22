@@ -20,24 +20,24 @@ export function Hero() {
             <img
               src={profile.avatar}
               alt={profile.name}
-              className="relative h-28 w-28 rounded-full border border-white/10 object-cover"
+              className="relative h-28 w-28 rounded-full border border-strong object-cover"
               loading="eager"
             />
           </div>
 
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-3 py-1 font-mono text-xs tracking-widest text-cyan-300/90 uppercase">
-            <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-cyan-400" />
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-widest text-cyan-600 uppercase dark:text-cyan-300/90">
+            <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-cyan-500" />
             Available for work
           </div>
 
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
             <span className="text-gradient">{profile.name}</span>
           </h1>
-          <p className="mt-3 font-mono text-sm tracking-[0.3em] text-slate-400 uppercase">
+          <p className="mt-3 font-mono text-sm tracking-[0.3em] text-muted uppercase">
             {profile.role}
           </p>
 
-          <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-slate-300/90 sm:text-lg">
+          <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-body sm:text-lg">
             {profile.tagline}
           </p>
 
@@ -47,7 +47,7 @@ export function Hero() {
                 href={links.github}
                 target="_blank"
                 rel="noreferrer"
-                className="group inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-slate-100 transition hover:border-cyan-400/40 hover:bg-cyan-400/10"
+                className="group inline-flex items-center gap-2 rounded-lg border border-base bg-surface px-5 py-2.5 text-sm font-medium text-strong transition hover:border-cyan-500/40"
               >
                 <GitHubIcon className="h-4 w-4" /> GitHub
               </a>
@@ -65,7 +65,7 @@ export function Hero() {
             {links.email && (
               <a
                 href={`mailto:${links.email}`}
-                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-slate-100 transition hover:border-cyan-400/40 hover:bg-cyan-400/10"
+                className="inline-flex items-center gap-2 rounded-lg border border-base bg-surface px-5 py-2.5 text-sm font-medium text-strong transition hover:border-cyan-500/40"
               >
                 <MailIcon className="h-4 w-4" /> Email
               </a>
@@ -75,7 +75,7 @@ export function Hero() {
                 href={links.resume}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-slate-100 transition hover:border-cyan-400/40 hover:bg-cyan-400/10"
+                className="inline-flex items-center gap-2 rounded-lg border border-base bg-surface px-5 py-2.5 text-sm font-medium text-strong transition hover:border-cyan-500/40"
               >
                 <DocIcon className="h-4 w-4" /> Résumé
               </a>
@@ -85,13 +85,13 @@ export function Hero() {
 
         {/* Tech stack ticker */}
         <div className="relative mt-16 overflow-hidden">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[var(--color-ink)] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[var(--color-ink)] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-fade-r" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-fade-l" />
           <div className="flex w-max marquee-track gap-4">
             {[...profile.stack, ...profile.stack].map((tech, i) => (
               <span
                 key={i}
-                className="whitespace-nowrap rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-mono text-xs text-slate-300"
+                className="whitespace-nowrap rounded-full border border-base bg-surface px-4 py-1.5 font-mono text-xs text-body"
               >
                 {tech}
               </span>

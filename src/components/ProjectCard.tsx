@@ -1,5 +1,5 @@
 import type { Project } from '../data/projects'
-import { GitHubIcon, ExternalIcon, LockIcon } from './icons'
+import { ExternalIcon, LockIcon } from './icons'
 
 export function ProjectCard({ project }: { project: Project }) {
   const { featured } = project
@@ -11,12 +11,12 @@ export function ProjectCard({ project }: { project: Project }) {
     >
       {/* HUD header row */}
       <div className="mb-4 flex items-center justify-between">
-        <span className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 font-mono text-[11px] tracking-wider text-cyan-300/90 uppercase">
+        <span className="rounded-md border border-base bg-surface px-2.5 py-1 font-mono text-[11px] tracking-wider text-cyan-600 uppercase dark:text-cyan-300/90">
           {project.category}
         </span>
-        <span className="font-mono text-[11px] text-slate-500">
+        <span className="font-mono text-[11px] text-faint">
           {project.private && (
-            <span className="mr-2 inline-flex items-center gap-1 text-fuchsia-300/90">
+            <span className="mr-2 inline-flex items-center gap-1 text-fuchsia-600 dark:text-fuchsia-300/90">
               <LockIcon className="h-3 w-3" /> private
             </span>
           )}
@@ -24,10 +24,8 @@ export function ProjectCard({ project }: { project: Project }) {
         </span>
       </div>
 
-      <h3 className="text-lg font-semibold text-slate-100 transition group-hover:text-white">
-        {project.name}
-      </h3>
-      <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-400">
+      <h3 className="text-lg font-semibold text-strong">{project.name}</h3>
+      <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
         {project.description}
       </p>
 
@@ -36,40 +34,26 @@ export function ProjectCard({ project }: { project: Project }) {
         {project.tech.map((t) => (
           <span
             key={t}
-            className="rounded-md bg-white/5 px-2 py-0.5 font-mono text-[11px] text-slate-300"
+            className="rounded-md bg-surface px-2 py-0.5 font-mono text-[11px] text-body"
           >
             {t}
           </span>
         ))}
       </div>
 
-      {/* Links */}
-      <div className="mt-6 flex items-center gap-4 border-t border-white/5 pt-4 text-sm">
-        {project.repo ? (
-          <a
-            href={project.repo}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-slate-300 transition hover:text-cyan-300"
-          >
-            <GitHubIcon className="h-4 w-4" /> Code
-          </a>
-        ) : (
-          <span className="inline-flex items-center gap-1.5 text-slate-500">
-            <LockIcon className="h-4 w-4" /> Private repo
-          </span>
-        )}
-        {project.live && (
+      {/* Live demo (optional) */}
+      {project.live && (
+        <div className="mt-6 flex items-center gap-4 border-t border-base pt-4 text-sm">
           <a
             href={project.live}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-slate-300 transition hover:text-fuchsia-300"
+            className="inline-flex items-center gap-1.5 text-body transition hover:text-fuchsia-500"
           >
-            <ExternalIcon className="h-4 w-4" /> Live
+            <ExternalIcon className="h-4 w-4" /> Live demo
           </a>
-        )}
-      </div>
+        </div>
+      )}
     </article>
   )
 }

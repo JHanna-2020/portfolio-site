@@ -1,5 +1,6 @@
 import { Hero } from './components/Hero'
 import { Projects } from './components/Projects'
+import { Certifications } from './components/Certifications'
 import { Footer } from './components/Footer'
 
 export default function App() {
@@ -8,6 +9,7 @@ export default function App() {
       <Hero />
       <main>
         <Projects />
+        <Certifications />
       </main>
       <Footer />
     </div>

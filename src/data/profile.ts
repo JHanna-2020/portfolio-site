@@ -10,7 +10,7 @@ export const profile = {
   links: {
     github: 'https://github.com/JHanna-2020',
     linkedin: 'https://www.linkedin.com/in/john-hanna-299ba3341',
-    email: 'm.hanna5241@gmail.com',
+    email: 'hannnajohn0615@gmail.com',
     resume: '', // optional: link to a hosted résumé PDF
   },
   // Skills shown in the hero marquee.

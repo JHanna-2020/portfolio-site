@@ -31,10 +31,10 @@ export function Projects() {
   return (
     <section id="projects" className="relative mx-auto max-w-6xl px-6 py-20">
       <div className="mb-10 flex flex-col gap-2">
-        <span className="font-mono text-xs tracking-[0.3em] text-cyan-300/80 uppercase">
+        <span className="font-mono text-xs tracking-[0.3em] text-cyan-600 uppercase dark:text-cyan-300/80">
           // selected work
         </span>
-        <h2 className="text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">
+        <h2 className="text-3xl font-bold tracking-tight text-strong sm:text-4xl">
           Projects
         </h2>
       </div>
@@ -48,8 +48,8 @@ export function Projects() {
               onClick={() => setFilter(c)}
               className={`rounded-lg border px-3.5 py-1.5 font-mono text-xs transition ${
                 filter === c
-                  ? 'border-cyan-400/50 bg-cyan-400/10 text-cyan-200'
-                  : 'border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:text-slate-200'
+                  ? 'border-cyan-500/50 bg-cyan-500/10 text-cyan-600 dark:text-cyan-200'
+                  : 'border-base bg-surface text-muted hover:border-strong hover:text-strong'
               }`}
             >
               {c}
@@ -62,7 +62,7 @@ export function Projects() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="search projects…"
-            className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2 font-mono text-sm text-slate-200 placeholder:text-slate-500 outline-none transition focus:border-cyan-400/50 sm:w-64"
+            className="w-full rounded-lg border border-base bg-surface px-4 py-2 font-mono text-sm text-strong placeholder:text-faint outline-none transition focus:border-cyan-500/50 sm:w-64"
           />
         </div>
       </div>
@@ -75,7 +75,7 @@ export function Projects() {
           ))}
         </div>
       ) : (
-        <p className="py-16 text-center font-mono text-sm text-slate-500">
+        <p className="py-16 text-center font-mono text-sm text-faint">
           No projects match “{query}”.
         </p>
       )}

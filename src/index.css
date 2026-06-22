@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #05060c;
-  --color-ink-soft: #0a0c16;
-  --color-neon: #22d3ee;
+  --color-neon: #06b6d4;
   --color-violet: #a855f7;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif;
@@ -11,56 +9,124 @@
     Consolas, monospace;
 }
 
+/* ── Semantic theme tokens (dark by default) ─────────────────────── */
+:root {
+  --bg: #05060c;
+  --bg-soft: #0a0c16;
+  --text: #cbd5e1;
+  --text-strong: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-faint: #64748b;
+
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-2: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --grid-line: rgba(148, 163, 184, 0.06);
+
+  --glass-from: rgba(255, 255, 255, 0.05);
+  --glass-to: rgba(255, 255, 255, 0.015);
+
+  --aurora-cyan: rgba(34, 211, 238, 0.16);
+  --aurora-violet: rgba(168, 85, 247, 0.16);
+  --aurora-blue: rgba(56, 189, 248, 0.1);
+
+  color-scheme: dark;
+}
+
+/* ── Light theme — applied automatically when the system is light ── */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f7fb;
+    --bg-soft: #ffffff;
+    --text: #334155;
+    --text-strong: #0f172a;
+    --text-muted: #475569;
+    --text-faint: #94a3b8;
+
+    --surface: rgba(15, 23, 42, 0.04);
+    --surface-2: rgba(255, 255, 255, 0.7);
+    --border: rgba(15, 23, 42, 0.1);
+    --border-strong: rgba(15, 23, 42, 0.18);
+    --grid-line: rgba(15, 23, 42, 0.05);
+
+    --glass-from: rgba(255, 255, 255, 0.75);
+    --glass-to: rgba(255, 255, 255, 0.45);
+
+    --aurora-cyan: rgba(8, 145, 178, 0.14);
+    --aurora-violet: rgba(168, 85, 247, 0.14);
+    --aurora-blue: rgba(14, 165, 233, 0.1);
+
+    color-scheme: light;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-ink);
-  color: rgb(203 213 225);
+  background-color: var(--bg);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
+/* ── Semantic text/surface utilities ─────────────────────────────── */
+.text-body { color: var(--text); }
+.text-strong { color: var(--text-strong); }
+.text-muted { color: var(--text-muted); }
+.text-faint { color: var(--text-faint); }
+.bg-surface { background-color: var(--surface); }
+.bg-surface-2 { background-color: var(--surface-2); }
+.border-base { border-color: var(--border); }
+.border-strong { border-color: var(--border-strong); }
+.bg-fade-r { background: linear-gradient(to right, var(--bg), transparent); }
+.bg-fade-l { background: linear-gradient(to left, var(--bg), transparent); }
+
 /* ── Animated grid + aurora backdrop ─────────────────────────────── */
 .bg-grid {
   background-image:
-    linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
 }
 
 .bg-aurora {
   background:
-    radial-gradient(50rem 50rem at 12% -10%, rgba(34, 211, 238, 0.16), transparent 60%),
-    radial-gradient(45rem 45rem at 95% 5%, rgba(168, 85, 247, 0.16), transparent 55%),
-    radial-gradient(40rem 40rem at 50% 120%, rgba(56, 189, 248, 0.10), transparent 60%);
+    radial-gradient(50rem 50rem at 12% -10%, var(--aurora-cyan), transparent 60%),
+    radial-gradient(45rem 45rem at 95% 5%, var(--aurora-violet), transparent 55%),
+    radial-gradient(40rem 40rem at 50% 120%, var(--aurora-blue), transparent 60%);
 }
 
 /* ── Neon / glass utilities ──────────────────────────────────────── */
 .glass {
-  background: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0.015)
-  );
+  background: linear-gradient(160deg, var(--glass-from), var(--glass-to));
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
 }
 
 .glow-ring {
   box-shadow:
-    0 0 0 1px rgba(34, 211, 238, 0.25),
-    0 0 28px -6px rgba(34, 211, 238, 0.45),
+    0 0 0 1px rgba(6, 182, 212, 0.3),
+    0 0 28px -6px rgba(6, 182, 212, 0.45),
     inset 0 0 20px -12px rgba(168, 85, 247, 0.6);
 }
 
 .text-gradient {
-  background: linear-gradient(110deg, #67e8f9 0%, #a855f7 55%, #f0abfc 100%);
+  background: linear-gradient(110deg, #0891b2 0%, #a855f7 55%, #d946ef 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+@media (prefers-color-scheme: dark) {
+  .text-gradient {
+    background: linear-gradient(110deg, #67e8f9 0%, #a855f7 55%, #f0abfc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 .card-hover {
@@ -69,8 +135,8 @@ body {
 }
 .card-hover:hover {
   transform: translateY(-6px);
-  border-color: rgba(34, 211, 238, 0.4);
-  box-shadow: 0 18px 50px -20px rgba(34, 211, 238, 0.4);
+  border-color: rgba(6, 182, 212, 0.45);
+  box-shadow: 0 18px 50px -20px rgba(6, 182, 212, 0.4);
 }
 
 /* Scanning beam that crosses a featured card */
@@ -84,12 +150,7 @@ body {
   position: absolute;
   inset-inline: 0;
   height: 40%;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(34, 211, 238, 0.10),
-    transparent
-  );
+  background: linear-gradient(to bottom, transparent, rgba(6, 182, 212, 0.12), transparent);
   animation: scan 4.5s linear infinite;
   pointer-events: none;
 }
@@ -99,9 +160,7 @@ body {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
-.marquee-track {
-  animation: marquee 22s linear infinite;
-}
+.marquee-track { animation: marquee 22s linear infinite; }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
@@ -110,8 +169,8 @@ body {
 .float { animation: float 6s ease-in-out infinite; }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.6); }
-  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(34, 211, 238, 0); }
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.6); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(6, 182, 212, 0); }
 }
 .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
 

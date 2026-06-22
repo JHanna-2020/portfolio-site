@@ -135,4 +135,13 @@ export const projects: Project[] = [
     repo: 'https://github.com/JHanna-2020/Coptic-Hymns-Website',
     year: 2023,
   },
+  {
+    name: 'Web Development Service',
+    description:
+      'The very first website I ever built — a web development services landing page. Rough around the edges, but it’s where everything started and what got me hooked on building for the web.',
+    category: 'Web App',
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    repo: 'https://github.com/JHanna-2020/webdevelopmentservice',
+    year: 2020,
+  },
 ]

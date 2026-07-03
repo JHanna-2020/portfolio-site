@@ -5,7 +5,7 @@
  */
 export function Placeholder({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mt-5 rounded-md border border-dashed border-amber-600/60 bg-amber-500/5 px-4 py-3 dark:border-amber-400/50">
+    <div className="mt-5 rounded-sm border border-dashed border-amber-600/60 bg-amber-500/5 px-4 py-3 dark:border-amber-400/50">
       <p className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-amber-700 dark:text-amber-400">
         To supply
       </p>

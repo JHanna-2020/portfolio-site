@@ -48,7 +48,7 @@ export default async function CaseStudyPage({
         <h1 className="max-w-3xl font-display text-4xl font-semibold tracking-[-0.02em] sm:text-6xl">
           {cs.title}
         </h1>
-        <p className="mt-6 max-w-2xl font-serif text-lg leading-relaxed text-muted sm:text-xl">
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">
           {cs.lede}
         </p>
       </header>
@@ -82,7 +82,7 @@ export default async function CaseStudyPage({
             <li key={l.href}>
               <a
                 href={l.href}
-                className="inline-flex items-center rounded-md border border-line px-4 py-2 font-mono text-[0.6875rem] uppercase tracking-[0.14em] transition-colors hover:border-accent hover:text-accent"
+                className="glow-hover inline-flex items-center rounded-sm border border-line px-4 py-2 font-mono text-[0.6875rem] uppercase tracking-[0.14em] hover:border-accent hover:text-accent"
               >
                 {l.label} ↗
               </a>

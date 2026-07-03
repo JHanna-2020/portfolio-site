@@ -17,7 +17,7 @@ export function StatusBadge({ status }: { status: Status }) {
     <span className="inline-flex items-center gap-1.5 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted">
       <span
         aria-hidden
-        className={`size-1.5 rounded-full ${shipped ? 'bg-accent' : 'bg-line'}`}
+        className={`size-1.5 rounded-full ${shipped ? 'dot-live bg-accent' : 'bg-line'}`}
       />
       {LABELS[status]}
     </span>

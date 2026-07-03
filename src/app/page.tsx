@@ -27,17 +27,16 @@ function Hero() {
         {profile.name} · {profile.location} · Web, iOS & Android
       </p>
       <h1 className="rise rise-2 mt-5 max-w-3xl font-display text-[clamp(2.75rem,8vw,5.25rem)] font-semibold leading-[1.02] tracking-[-0.03em]">
-        Software that{' '}
-        <em className="font-serif font-medium italic text-accent">ships</em>.
+        Software that <em className="readout">ships</em>.
       </h1>
-      <p className="rise rise-3 mt-7 max-w-xl font-serif text-lg leading-relaxed text-muted">
+      <p className="rise rise-3 mt-7 max-w-xl text-lg leading-relaxed text-muted">
         I design, build, and deploy web apps and native mobile apps for clients
         and communities — and I stay through launch and beyond. Full-stack
         developer and computer science junior at the University of
         Houston–Clear Lake.
       </p>
 
-      <dl className="rise rise-4 mt-10 max-w-xl space-y-2.5 border-l-2 border-accent pl-5">
+      <dl className="rise rise-4 mt-10 max-w-xl space-y-2.5 border border-line border-l-2 border-l-accent bg-surface/60 py-4 pl-5 pr-6">
         <div className="flex flex-col gap-x-6 gap-y-0.5 sm:flex-row sm:items-baseline">
           <dt className="w-12 shrink-0 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-accent">
             Now
@@ -55,13 +54,13 @@ function Hero() {
       <div className="rise rise-4 mt-10 flex flex-wrap gap-4">
         <a
           href={`mailto:${profile.links.email}`}
-          className="inline-flex items-center rounded-md bg-accent px-5 py-3 font-mono text-xs uppercase tracking-[0.14em] text-accent-contrast transition-opacity hover:opacity-90"
+          className="glow-hover inline-flex items-center rounded-sm bg-accent px-5 py-3 font-mono text-xs uppercase tracking-[0.14em] text-accent-contrast hover:opacity-95"
         >
           Tell me about your project
         </a>
         <a
           href="#work"
-          className="inline-flex items-center rounded-md border border-line px-5 py-3 font-mono text-xs uppercase tracking-[0.14em] text-ink transition-colors hover:border-accent"
+          className="glow-hover inline-flex items-center rounded-sm border border-line px-5 py-3 font-mono text-xs uppercase tracking-[0.14em] text-ink hover:border-accent"
         >
           See the work
         </a>
@@ -84,7 +83,7 @@ function Work() {
           <li key={cs.slug}>
             <Link
               href={`/work/${cs.slug}/`}
-              className="group grid gap-x-8 gap-y-3 border-t border-line py-10 sm:grid-cols-[8rem_1fr_auto] sm:py-12"
+              className="ticks group grid gap-x-8 gap-y-3 border-t border-line px-2 py-10 sm:grid-cols-[8rem_1fr_auto] sm:py-12"
             >
               <div className="flex items-baseline gap-4 sm:flex-col sm:gap-2">
                 <span className="font-mono text-[0.6875rem] tracking-[0.14em] text-muted">
@@ -101,7 +100,7 @@ function Work() {
                 <h3 className="font-display text-2xl font-semibold tracking-tight transition-colors group-hover:text-accent sm:text-3xl">
                   {cs.title}
                 </h3>
-                <p className="mt-2.5 max-w-xl font-serif leading-relaxed text-muted">
+                <p className="mt-2.5 max-w-xl leading-relaxed text-muted">
                   {cs.summary}
                 </p>
                 <p className="mt-3 font-mono text-[0.6875rem] tracking-[0.06em] text-muted">
@@ -142,7 +141,7 @@ function Services() {
               {s.name}
             </h3>
             <div>
-              <p className="max-w-xl font-serif leading-relaxed text-muted">
+              <p className="max-w-xl leading-relaxed text-muted">
                 {s.description}
               </p>
               <p className="mt-3 font-mono text-[0.6875rem] tracking-[0.06em] text-muted">
@@ -169,7 +168,7 @@ function Archive() {
         {archive.map((p) => (
           <li
             key={p.name}
-            className="flex flex-col rounded-lg border border-line p-5 transition-colors hover:border-accent/50"
+            className="ticks flex flex-col rounded-sm border border-line bg-bg/60 p-5 transition-colors hover:border-accent/50"
           >
             <div className="flex items-baseline justify-between gap-3">
               <h3 className="font-display font-semibold tracking-tight">{p.name}</h3>
@@ -238,7 +237,7 @@ function About() {
                     {job.role}
                     {isCurrent(job) && (
                       <span className="ml-2 inline-flex items-center gap-1.5 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-accent">
-                        <span aria-hidden className="size-1.5 rounded-full bg-accent" />
+                        <span aria-hidden className="dot-live size-1.5 rounded-full bg-accent" />
                         Current
                       </span>
                     )}

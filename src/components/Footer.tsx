@@ -9,14 +9,14 @@ export function Footer() {
         <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
           Have a project in mind?
         </h2>
-        <p className="mt-5 max-w-lg font-serif text-lg leading-relaxed text-muted">
+        <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted">
           Tell me what you’re trying to build and where it needs to run — web,
           iOS, Android, or all three. I’ll reply with how I’d approach it.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <a
             href={`mailto:${links.email}`}
-            className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-3 font-mono text-xs uppercase tracking-[0.14em] text-accent-contrast transition-opacity hover:opacity-90"
+            className="glow-hover inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-3 font-mono text-xs uppercase tracking-[0.14em] text-accent-contrast hover:opacity-95"
           >
             {links.email}
           </a>

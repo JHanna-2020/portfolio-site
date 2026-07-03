@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Schibsted_Grotesk, Source_Serif_4, Spline_Sans_Mono } from 'next/font/google'
+import { Schibsted_Grotesk, Spline_Sans_Mono } from 'next/font/google'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { profile } from '@/data/profile'
@@ -8,13 +8,6 @@ import './globals.css'
 const display = Schibsted_Grotesk({
   subsets: ['latin'],
   variable: '--font-schibsted',
-  display: 'swap',
-})
-
-const serif = Source_Serif_4({
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  variable: '--font-source-serif',
   display: 'swap',
 })
 
@@ -37,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${serif.variable} ${mono.variable}`}>
+    <html lang="en" className={`${display.variable} ${mono.variable}`}>
       <body>
         <a href="#main" className="skip-link">
           Skip to content

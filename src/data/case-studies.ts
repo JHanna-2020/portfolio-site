@@ -92,12 +92,17 @@ export const caseStudies: CaseStudy[] = [
     year: '2026',
     status: 'app-store',
     summary:
-      'Official native iOS and Android apps for a church congregation — announcements with push notifications, a Coptic calendar, and member registration on one shared backend.',
+      'The official iOS app for a church congregation — announcements with push notifications, a Coptic calendar, and member registration — live on the App Store, with a native Android companion built and on the way.',
     role: 'Sole developer — iOS, Android, and backend',
     stack: ['Swift', 'SwiftUI', 'Kotlin', 'Jetpack Compose', 'Firebase', 'Hilt'],
-    links: [],
+    links: [
+      {
+        label: 'App Store',
+        href: 'https://apps.apple.com/us/app/st-julitta-pearland/id6761444244',
+      },
+    ],
     lede:
-      'A real client, a real congregation, and two platforms to ship on. St. Julitta needed one official channel for parish life — announcements people actually see, the Coptic liturgical calendar, and member registration — and trusted a single developer to deliver it on both iOS and Android.',
+      'A real client, a real congregation, and two platforms to ship on. St. Julitta needed one official channel for parish life — announcements people actually see, the Coptic liturgical calendar, and member registration — and trusted a single developer to deliver it: first on iOS, now live on the App Store, with Android next.',
     sections: [
       {
         heading: 'Problem',
@@ -115,15 +120,14 @@ export const caseStudies: CaseStudy[] = [
       {
         heading: 'Outcome',
         paragraphs: [
-          'The apps are the parish’s official channel, built and maintained end to end by one developer. This is the engagement I point to when a client asks what working with me looks like: requirements from non-technical stakeholders, two platforms, and software their community depends on.',
+          'The iOS app is live on the App Store as St. Julitta Pearland — the parish’s official channel, built and maintained end to end by one developer. The Android companion is built with Jetpack Compose and headed for release next. This is the engagement I point to when a client asks what working with me looks like: requirements from non-technical stakeholders, two platforms, and software their community depends on.',
         ],
         placeholder:
-          'Confirm store status and add links (App Store / Google Play), congregation or install count, and a quote from the church if you can get one — a client quote is worth more than any metric here.',
+          'Add the congregation or install count, the Android release timeline once it’s set, and a quote from the church if you can get one — a client quote is worth more than any metric here.',
       },
     ],
     assetsNeeded: [
-      'Phone screenshots of both apps (announcements + calendar screens), ideally framed on device.',
-      'App Store / Google Play links, or the current release status.',
+      'Phone screenshots of the iOS app (announcements + calendar screens), ideally framed on device; add Android shots when it ships.',
     ],
   },
   {

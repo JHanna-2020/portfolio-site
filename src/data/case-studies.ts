@@ -122,8 +122,6 @@ export const caseStudies: CaseStudy[] = [
         paragraphs: [
           'The iOS app is live on the App Store as St. Julitta Pearland — the parish’s official channel, built and maintained end to end by one developer. The Android companion is built with Jetpack Compose and headed for release next. This is the engagement I point to when a client asks what working with me looks like: requirements from non-technical stakeholders, two platforms, and software their community depends on.',
         ],
-        placeholder:
-          'Add the congregation or install count, the Android release timeline once it’s set, and a quote from the church if you can get one — a client quote is worth more than any metric here.',
       },
     ],
     assetsNeeded: [

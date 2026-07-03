@@ -32,7 +32,6 @@ export function Footer() {
           <ul className="flex gap-6">
             {[
               { label: 'GitHub', href: links.github },
-              { label: 'LinkedIn', href: links.linkedin },
               ...(links.resume ? [{ label: 'Résumé', href: links.resume }] : []),
             ].map((l) => (
               <li key={l.label}>

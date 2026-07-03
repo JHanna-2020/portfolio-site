@@ -156,7 +156,9 @@ body {
 .ticks:hover::before,
 .ticks:hover::after,
 .ticks:focus-visible::before,
-.ticks:focus-visible::after {
+.ticks:focus-visible::after,
+.ticks-visible::before,
+.ticks-visible::after {
   opacity: 1;
 }
 

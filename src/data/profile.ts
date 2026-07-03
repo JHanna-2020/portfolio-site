@@ -6,6 +6,8 @@ export const profile = {
   name: 'John Hanna',
   role: 'Full-stack & mobile developer',
   location: 'Houston, TX', // [SWAP] confirm the city you want to publish
+  /** Hero portrait. Swap for a real photo in public/ (e.g. '/portrait.jpg'). */
+  avatar: 'https://avatars.githubusercontent.com/u/66224091?v=4',
   education: {
     degree: 'B.S. Computer Science',
     school: 'University of Houston–Clear Lake',

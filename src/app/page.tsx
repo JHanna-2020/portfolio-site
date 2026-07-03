@@ -22,7 +22,8 @@ export default function Home() {
 
 function Hero() {
   return (
-    <section className="mx-auto w-full max-w-5xl px-5 pb-24 pt-20 sm:px-8 sm:pb-32 sm:pt-28">
+    <section className="mx-auto w-full max-w-5xl px-5 pb-24 pt-20 sm:px-8 sm:pb-32 sm:pt-28 lg:grid lg:grid-cols-[1fr_auto] lg:gap-16">
+      <div>
       <p className="eyebrow rise">
         {profile.name} · {profile.location} · Web, iOS & Android
       </p>
@@ -59,12 +60,34 @@ function Hero() {
           Tell me about your project
         </a>
         <a
+          href={profile.links.linkedin}
+          className="glow-hover inline-flex items-center rounded-sm bg-[#0a66c2] px-5 py-3 font-mono text-xs uppercase tracking-[0.14em] text-white hover:opacity-95"
+        >
+          LinkedIn
+        </a>
+        <a
           href="#work"
           className="glow-hover inline-flex items-center rounded-sm border border-line px-5 py-3 font-mono text-xs uppercase tracking-[0.14em] text-ink hover:border-accent"
         >
           See the work
         </a>
       </div>
+      </div>
+
+      <figure className="rise rise-3 mt-14 w-44 self-start sm:w-52 lg:mt-2 lg:w-64">
+        <div className="ticks ticks-visible border border-line bg-surface/60 p-1.5">
+          <img
+            src={profile.avatar}
+            alt={`Portrait of ${profile.name}`}
+            width={460}
+            height={460}
+            className="block aspect-square w-full rounded-[1px] object-cover"
+          />
+        </div>
+        <figcaption className="mt-2.5 font-mono text-[0.625rem] tracking-[0.14em] text-muted">
+          29.76°N · 95.36°W
+        </figcaption>
+      </figure>
     </section>
   )
 }

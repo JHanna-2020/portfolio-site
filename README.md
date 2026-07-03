@@ -1,64 +1,47 @@
 # John Hanna — Portfolio
 
-A futuristic, single-page portfolio of my web, mobile, and full-stack projects.
-Built with **React + Vite + TypeScript + Tailwind CSS** as a static site, so it
-hosts for free on either **Vercel** or **GitHub Pages**.
+Freelance-positioned portfolio: three deep case studies, a project archive,
+services, and contact. Built with **Next.js (App Router) + TypeScript +
+Tailwind CSS v4**, statically exported — hosts free on **Vercel** or
+**GitHub Pages**. Light and dark themes are both fully designed and follow
+the system preference with zero JavaScript.
 
 ## Develop
 
 ```bash
 npm install
-npm run dev      # http://localhost:5173
-npm run build    # outputs static site to dist/
-npm run preview  # preview the production build
+npm run dev      # http://localhost:3000
+npm run build    # static export to out/
 ```
 
 ## Edit the content
 
 Everything is data-driven — no need to touch the components:
 
-- **`src/data/profile.ts`** — your name, role, tagline, and links.
-  👉 Paste your **LinkedIn URL** into `links.linkedin` to show the LinkedIn button.
-- **`src/data/projects.ts`** — the project list. Add, remove, or reorder freely.
-  Set `private: true` for private repos (shows a lock badge, no broken link);
-  set `featured: true` to pin a project to the top with a neon highlight.
-- **`src/data/certifications.ts`** — your certifications. To add one as you earn it:
-  1. Drop the certificate PDF (or image) into **`public/certificates/`**.
-  2. Add an entry: `{ name, issuer, date, file: 'certificates/your-file.pdf' }`
-     (or use `url` for an external verification link instead of a hosted file).
-
-  The section hides itself automatically while the list is empty.
-
-The site automatically follows your **system light/dark theme** — no toggle needed.
+- **`src/data/profile.ts`** — name, availability lines, bio, links.
+  Fields marked `[SWAP]` are placeholders: replace them.
+- **`src/data/case-studies.ts`** — the three deep case studies at
+  `/work/<slug>/`. Each `placeholder` / `assetsNeeded` entry renders as a
+  visible amber "TO SUPPLY" box on the page; delete each one as you fold the
+  real detail into the copy.
+- **`src/data/projects.ts`** — the compact archive grid.
+- **`src/data/services.ts`** — the three freelance service lines.
+- **`src/data/experience.ts`** — internships (a "Current" badge shows
+  automatically while the date range includes today).
+- **`src/data/certifications.ts`** — drop the PDF in `public/certificates/`
+  and add an entry.
 
 ## Deploy
 
-### Option A — Vercel (recommended, gives a clean URL for LinkedIn)
+### Option A — Vercel (recommended: clean URL, per-page metadata previews)
 
-1. Push this repo to GitHub.
-2. Go to [vercel.com/new](https://vercel.com/new) and import the repo.
-3. Framework preset auto-detects **Vite** — just click **Deploy**.
-4. You get a URL like `https://your-project.vercel.app`. Add it to LinkedIn.
+Import the repo at [vercel.com/new](https://vercel.com/new) — the Next.js
+preset is detected automatically. Or: `npm i -g vercel && vercel --prod`.
 
-Or from the CLI:
+### Option B — GitHub Pages (current setup, no extra account)
 
-```bash
-npm i -g vercel
-vercel --prod
-```
+Push to `main`; `.github/workflows/deploy.yml` builds the static export with
+the `/portfolio-site` base path and publishes it automatically.
 
-### Option B — GitHub Pages (free, no extra account)
-
-1. Push this repo to GitHub.
-2. In the repo: **Settings → Pages → Build and deployment → Source = GitHub Actions**.
-3. Push to `main`. The included workflow (`.github/workflows/deploy.yml`) builds
-   and publishes automatically.
-4. Your site goes live at `https://<username>.github.io/<repo-name>/`.
-
-> The workflow sets the correct base path automatically. If you instead use a
-> custom domain or a `username.github.io` repo, the base is `/` — no change needed
-> on Vercel.
-
-## Add to LinkedIn
-
-Profile → **Contact info** (or the **Featured** section) → add the deployed URL.
+> After deploying, update `metadataBase` in `src/app/layout.tsx` if the
+> site's canonical URL changes.

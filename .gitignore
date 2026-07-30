@@ -1,10 +1,11 @@
 node_modules
-dist
-dist-ssr
+.next
+out
+next-env.d.ts
+*.tsbuildinfo
 *.local
 .DS_Store
 .vercel
 .env
 .env.*
 !.env.example
-.github/workflows/

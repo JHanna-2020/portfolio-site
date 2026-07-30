@@ -1,59 +1,61 @@
-import { profile, formatPhone } from '../data/profile'
-import { GitHubIcon, LinkedInIcon, MailIcon, PhoneIcon } from './icons'
+import { profile, formatPhone } from '@/data/profile'
 
 export function Footer() {
   const { links } = profile
   return (
-    <footer className="relative border-t border-hair">
-      <div className="mx-auto max-w-5xl px-6 py-16">
-        <div className="flex flex-col gap-10 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="font-mono text-[11px] tracking-[0.25em] text-gold uppercase">
-              Let’s talk
-            </p>
-            <a
-              href={links.email ? `mailto:${links.email}` : undefined}
-              className="font-display mt-3 block text-2xl font-semibold tracking-[-0.01em] break-all text-bone transition hover:text-gold sm:text-4xl sm:break-normal"
-            >
-              {links.email || 'Get in touch'}
-            </a>
-            {links.phone && (
-              <a
-                href={`tel:${links.phone}`}
-                className="mt-3 inline-flex items-center gap-2 font-mono text-sm text-muted transition hover:text-gold"
-              >
-                <PhoneIcon className="h-4 w-4" /> {formatPhone(links.phone)}
-              </a>
-            )}
-          </div>
-
-          <div className="flex items-center gap-5">
-            {links.github && (
-              <a href={links.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="text-muted transition hover:text-gold">
-                <GitHubIcon className="h-6 w-6" />
-              </a>
-            )}
-            {links.linkedin && (
-              <a href={links.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-muted transition hover:text-gold">
-                <LinkedInIcon className="h-6 w-6" />
-              </a>
-            )}
-            {links.email && (
-              <a href={`mailto:${links.email}`} aria-label="Email" className="text-muted transition hover:text-gold">
-                <MailIcon className="h-6 w-6" />
-              </a>
-            )}
-            {links.phone && (
-              <a href={`tel:${links.phone}`} aria-label="Phone" className="text-muted transition hover:text-gold">
-                <PhoneIcon className="h-6 w-6" />
-              </a>
-            )}
-          </div>
+    <footer id="contact" className="border-t border-line">
+      <div className="mx-auto w-full max-w-5xl px-5 py-20 sm:px-8 sm:py-28">
+        <p className="eyebrow">Contact</p>
+        <h2 className="mt-4 max-w-xl font-display text-4xl font-semibold tracking-tight sm:text-5xl">
+          Have a project in mind?
+        </h2>
+        <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted">
+          Tell me what you’re trying to build and where it needs to run — web,
+          iOS, Android, or all three. I’ll reply with how I’d approach it.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href={`mailto:${links.email}`}
+            className="glow-hover inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-3 font-mono text-xs uppercase tracking-[0.14em] text-accent-contrast hover:opacity-95"
+          >
+            {links.email}
+          </a>
+          <a
+            href={`tel:+1${links.phone}`}
+            className="font-mono text-xs uppercase tracking-[0.14em] text-muted transition-colors hover:text-ink"
+          >
+            {formatPhone(links.phone)}
+          </a>
         </div>
 
-        <p className="mt-12 font-mono text-[11px] text-faint">
-          © {new Date().getFullYear()} {profile.name} · designed &amp; built with React, Vite &amp; Tailwind
-        </p>
+        <div className="mt-16 flex flex-col justify-between gap-6 border-t border-line pt-8 sm:flex-row sm:items-end">
+          <ul className="flex gap-6">
+            {[
+              { label: 'GitHub', href: links.github },
+              ...(links.resume ? [{ label: 'Résumé', href: links.resume }] : []),
+            ].map((l) => (
+              <li key={l.label}>
+                <a
+                  href={l.href}
+                  className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-muted transition-colors hover:text-ink"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="text-sm text-muted">
+            Designed and built by {profile.name} with Next.js, TypeScript, and
+            Tailwind —{' '}
+            <a
+              href={links.source}
+              className="underline decoration-line underline-offset-4 transition-colors hover:text-ink"
+            >
+              view the source
+            </a>
+            .
+          </p>
+        </div>
       </div>
     </footer>
   )

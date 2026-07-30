@@ -1,0 +1,222 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Tokens — "precision instrument". Cool machined neutrals, one electric
+   azure accent, a faint calibration grid across the page. Both themes are
+   fully designed; the switch is pure CSS (prefers-color-scheme), so theming
+   ships zero JavaScript.
+--------------------------------------------------------------------------- */
+:root {
+  --bg: #f5f7f8;
+  --surface: #eceff1;
+  --ink: #141a1e;
+  --muted: #526069;
+  --line: #d8dfe3;
+  --accent: #005fcc;
+  --accent-contrast: #ffffff;
+  --glow: color-mix(in srgb, var(--accent) 30%, transparent);
+  --grid: color-mix(in srgb, var(--ink) 4%, transparent);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0c1114;
+    --surface: #12181d;
+    --ink: #e3eaef;
+    --muted: #8ea0ac;
+    --line: #1f2a32;
+    --accent: #57c3ff;
+    --accent-contrast: #061019;
+    --glow: color-mix(in srgb, var(--accent) 35%, transparent);
+    --grid: color-mix(in srgb, var(--ink) 6%, transparent);
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+
+  --font-display: var(--font-schibsted), system-ui, sans-serif;
+  --font-mono: var(--font-spline-mono), ui-monospace, monospace;
+}
+
+body {
+  background-color: var(--bg);
+  /* Calibration grid — faint enough to read as texture, not decoration. */
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: var(--ink);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Skip link: visually hidden until focused. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 100;
+  padding: 0.5rem 0.875rem;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  transition: top 150ms ease;
+}
+.skip-link:focus-visible {
+  top: 1rem;
+}
+
+/* Panel label — mono, letterspaced, with a square accent tick. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.eyebrow::before {
+  content: '';
+  width: 0.3125rem;
+  height: 0.3125rem;
+  flex-shrink: 0;
+  background: var(--accent);
+}
+
+/* The accent word in the hero — a readout, not a flourish. */
+.readout {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.94em;
+  color: var(--accent);
+  text-shadow: 0 0 22px var(--glow);
+}
+
+/* Long-form case-study prose. */
+.prose-case p {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.prose-case p + p {
+  margin-top: 1.25em;
+}
+
+/* HUD corner ticks — appear on hover/focus of a card or ledger row. */
+.ticks {
+  position: relative;
+}
+.ticks::before,
+.ticks::after {
+  content: '';
+  position: absolute;
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 1px solid var(--accent);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+.ticks::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+.ticks::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+.ticks:hover::before,
+.ticks:hover::after,
+.ticks:focus-visible::before,
+.ticks:focus-visible::after,
+.ticks-visible::before,
+.ticks-visible::after {
+  opacity: 1;
+}
+
+/* Accent glow on primary actions. */
+.glow-hover {
+  transition: box-shadow 250ms ease, opacity 250ms ease, border-color 250ms ease;
+}
+.glow-hover:hover {
+  box-shadow: 0 0 24px var(--glow);
+}
+
+/* Live-status dot: a slow radar ping. Something is running right now. */
+@keyframes ping-dot {
+  0% {
+    box-shadow: 0 0 0 0 var(--glow);
+  }
+  70% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+.dot-live {
+  animation: ping-dot 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Hero load sequence: one orchestrated rise, then the page stays still. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.rise-2 {
+  animation-delay: 90ms;
+}
+.rise-3 {
+  animation-delay: 180ms;
+}
+.rise-4 {
+  animation-delay: 280ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

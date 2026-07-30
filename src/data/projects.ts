@@ -20,6 +20,16 @@ export interface ArchiveProject {
 
 export const archive: ArchiveProject[] = [
   {
+    name: 'Title Translation',
+    description:
+      'Pulls a whole YouTube channel through the Data API and shows every Arabic title beside an English translation — translated server-side in a bounded concurrency pool, where a failed request falls back to the original title instead of sinking the list.',
+    tech: ['Next.js', 'TypeScript', 'YouTube Data API'],
+    year: 2026,
+    status: 'live',
+    repo: 'https://github.com/JHanna-2020/videoTitles',
+    live: 'https://video-titles.vercel.app/',
+  },
+  {
     name: 'TaskManager25',
     description:
       'A task manager with synced desktop and web interfaces sharing one real-time Firestore backend, plus recurring tasks and Discord reminders.',
